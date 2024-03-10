@@ -1,0 +1,14 @@
+[package]
+name = "dgira"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/olidacombe/dgira"
+
+[dependencies]
+color-eyre = { version = "0.6.2" }
+gouqi = { version = "0.7.1" }
+serde_json = { version = "1.0.114" }
+tracing = { version = "0.1.40" }
+tracing-subscriber = { version = "0.3.18" }
+clap = { version = "4.5.2", features = ["derive"] }
