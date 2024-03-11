@@ -1,8 +1,10 @@
+use cli::Args;
 use color_eyre::Result;
+use gouqi::{Credentials, Jira, SearchOptions};
 use std::{env, sync::OnceLock};
 use tracing::debug;
 
-use gouqi::{Credentials, Jira, SearchOptions};
+pub mod cli;
 
 fn credentials() -> Result<Credentials> {
     let user = env::var("JIRA_USER")?;
@@ -24,11 +26,20 @@ pub fn client() -> &'static Jira {
     CLIENT.get_or_init(|| init_client().expect("Failed to initialize Jira client"))
 }
 
-pub fn search_options() -> SearchOptions {
-    let mut builder = SearchOptions::builder();
-    if let Ok(ref proj) = env::var("JIRA_PROJECT") {
-        builder.project_key_or_id(proj);
-    };
-    // builder.state("open");
-    builder.build()
+pub fn search_options(_args: &Args) -> SearchOptions {
+    // TODO?
+    SearchOptions::default()
+}
+
+pub fn query(args: &Args) -> String {
+    let mut query = "order by created DESC".to_string();
+    query = format!(
+        "{} {query}",
+        args.projects
+            .iter()
+            .map(|p| format!("project = {p}"))
+            .collect::<Vec<_>>()
+            .join(" or ")
+    );
+    query
 }
