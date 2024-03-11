@@ -2,7 +2,7 @@ use color_eyre::Result;
 use std::{env, sync::OnceLock};
 use tracing::debug;
 
-use gouqi::{Credentials, Jira};
+use gouqi::{Credentials, Jira, SearchOptions};
 
 fn credentials() -> Result<Credentials> {
     let user = env::var("JIRA_USER")?;
@@ -22,4 +22,13 @@ fn init_client() -> Result<Jira> {
 pub fn client() -> &'static Jira {
     static CLIENT: OnceLock<Jira> = OnceLock::new();
     CLIENT.get_or_init(|| init_client().expect("Failed to initialize Jira client"))
+}
+
+pub fn search_options() -> SearchOptions {
+    let mut builder = SearchOptions::builder();
+    if let Ok(ref proj) = env::var("JIRA_PROJECT") {
+        builder.project_key_or_id(proj);
+    };
+    // builder.state("open");
+    builder.build()
 }
