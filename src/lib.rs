@@ -26,9 +26,12 @@ pub fn client() -> &'static Jira {
     CLIENT.get_or_init(|| init_client().expect("Failed to initialize Jira client"))
 }
 
-pub fn search_options(_args: &Args) -> SearchOptions {
-    // TODO?
-    SearchOptions::default()
+pub fn search_options(args: &Args) -> SearchOptions {
+    let mut opts = SearchOptions::builder();
+    if args.compact {
+        opts.fields(vec!["summary"]);
+    }
+    opts.build()
 }
 
 pub fn query(args: &Args) -> String {

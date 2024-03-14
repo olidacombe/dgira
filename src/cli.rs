@@ -4,6 +4,13 @@ use clap::Parser;
 #[command(version)]
 pub struct Args {
     #[arg(
+        default_value_t = false,
+        short,
+        long,
+        help = "compact, i.e. summary only"
+    )]
+    pub compact: bool,
+    #[arg(
         short,
         long,
         value_delimiter(','),
