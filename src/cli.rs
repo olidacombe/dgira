@@ -10,6 +10,8 @@ pub struct Args {
         help = "compact, i.e. summary only"
     )]
     pub compact: bool,
+    #[arg(short, long, help = "max results to fetch")]
+    pub limit: Option<u64>,
     #[arg(
         short,
         long,
