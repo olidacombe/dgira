@@ -13,7 +13,7 @@ fn main() -> Result<()> {
         generate(
             shell,
             &mut Args::command_for_update(),
-            "blabla",
+            env!("CARGO_PKG_NAME"),
             &mut &std::io::stdout(),
         );
         return Ok(());
