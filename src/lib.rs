@@ -8,7 +8,6 @@
 //! export JIRA_HOST=https://foo.atlassian.net/
 //! export JIRA_USAR=timmy
 //! export JIRA_PASS=.....
-//!
 //! ```
 use cli::Args;
 use color_eyre::Result;

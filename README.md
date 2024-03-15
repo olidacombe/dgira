@@ -12,7 +12,6 @@ A tool for making tools - with Jira
 export JIRA_HOST=https://foo.atlassian.net/
 export JIRA_USAR=timmy
 export JIRA_PASS=.....
-
 ```
 
 <!-- cargo-rdme end -->
