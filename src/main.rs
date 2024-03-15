@@ -1,4 +1,5 @@
-use clap::Parser;
+use clap::{CommandFactory, Parser};
+use clap_complete::generate;
 use color_eyre::Result;
 use dgira::{cli::Args, client, query, search_options};
 use gouqi::Issue;
@@ -7,6 +8,17 @@ fn main() -> Result<()> {
     tracing_subscriber::fmt::init();
 
     let args = Args::parse();
+
+    if let Some(shell) = args.completions {
+        generate(
+            shell,
+            &mut Args::command_for_update(),
+            env!("CARGO_PKG_NAME"),
+            &mut &std::io::stdout(),
+        );
+        return Ok(());
+    }
+
     let search_options = search_options(&args);
     let query = query(&args);
 

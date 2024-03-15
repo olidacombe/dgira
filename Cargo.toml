@@ -1,6 +1,6 @@
 [package]
 name = "dgira"
-version = "0.1.3"
+version = "0.1.4"
 description = "Simple Jira Utility"
 edition = "2021"
 license = "MIT OR Apache-2.0"
@@ -13,6 +13,9 @@ serde_json = { version = "1.0.114" }
 tracing = { version = "0.1.40" }
 tracing-subscriber = { version = "0.3.18" }
 clap = { version = "4.5.2", features = ["derive"] }
+clap_complete = "4.5.1"
 
 [dev-dependencies]
-cargo-husky = { version = "1.5.0", features = ["user-hooks"], default-features = false }
+cargo-husky = { version = "1.5.0", features = [
+    "user-hooks",
+], default-features = false }
