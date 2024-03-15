@@ -13,3 +13,8 @@ gouqi = { version = "0.7.1", registry = "gsr-remote" }
 serde_json = { version = "1.0.114", registry = "gsr-remote" }
 tracing = { version = "0.1.40", registry = "gsr-remote" }
 tracing-subscriber = { version = "0.3.18", registry = "gsr-remote" }
+
+[dev-dependencies.cargo-husky]
+version = "1.5.0"
+default-features = false
+features = ["user-hooks"]

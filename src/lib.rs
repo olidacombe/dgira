@@ -1,3 +1,15 @@
+//! A tool for making tools - with Jira
+//!
+//! ## Setup
+//!
+//! `dgira` needs three environment variables:
+//!
+//! ```bash
+//! export JIRA_HOST=https://foo.atlassian.net/
+//! export JIRA_USAR=timmy
+//! export JIRA_PASS=.....
+//!
+//! ```
 use cli::Args;
 use color_eyre::Result;
 use gouqi::{Credentials, Jira, SearchOptions};
