@@ -31,9 +31,6 @@ pub fn search_options(args: &Args) -> SearchOptions {
     if args.compact {
         opts.fields(vec!["summary"]);
     }
-    if let Some(limit) = args.limit {
-        opts.max_results(limit);
-    }
     opts.build()
 }
 

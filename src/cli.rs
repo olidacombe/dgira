@@ -11,7 +11,7 @@ pub struct Args {
     )]
     pub compact: bool,
     #[arg(short, long, help = "max results to fetch")]
-    pub limit: Option<u64>,
+    pub limit: Option<usize>,
     #[arg(
         short,
         long,
