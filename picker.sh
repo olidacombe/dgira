@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-cargo run -q \
+cargo run -q -- -l 100 -c \
     | jq --unbuffered -r '"\(.key) \(.fields.summary)"' \
     | fzf
