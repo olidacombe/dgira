@@ -5,7 +5,7 @@ on:
     branches:
       - main
   pull_request:
-    types: [ opened, synchronize, reopened ]
+    types: [opened, synchronize, reopened]
     branches:
       - main
 
@@ -13,7 +13,6 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-    
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -23,7 +22,7 @@ jobs:
 
       - name: Cache dependencies
         id: cache-dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: |
             ~/.cargo/registry
@@ -67,7 +66,7 @@ jobs:
         run: cargo clippy --all-targets --all-features
       - uses: giraffate/clippy-action@v1
         with:
-          reporter: 'github-pr-review'
+          reporter: "github-pr-review"
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
   readme:
